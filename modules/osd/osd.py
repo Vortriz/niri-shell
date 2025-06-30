@@ -7,6 +7,7 @@ from ..shared_widgets import MaterialBrightnessSlider, MaterialVolumeSlider
 audio = AudioService.get_default()
 backlight = BacklightService.get_default()
 
+
 class OSD(widgets.RevealerWindow):
     def __init__(self, namespace: str, revealer):
         super().__init__(
@@ -29,6 +30,7 @@ class OSD(widgets.RevealerWindow):
     @utils.debounce(1500)
     def __update_visible(self) -> None:
         super().set_property("visible", False)
+
 
 # class OSDBacklight(widgets.RevealerWindow):
 #     def __init__(self):
@@ -65,7 +67,7 @@ class OSDBacklight(OSD):
     def __init__(self):
         super().__init__(
             namespace="Backlight",
-            revealer = widgets.Revealer(
+            revealer=widgets.Revealer(
                 transition_type="crossfade",
                 child=widgets.Box(
                     child=[
@@ -83,11 +85,12 @@ class OSDBacklight(OSD):
             ),
         )
 
+
 class OSDMic(OSD):
     def __init__(self):
         super().__init__(
             namespace="Microphone",
-            revealer = widgets.Revealer(
+            revealer=widgets.Revealer(
                 transition_type="crossfade",
                 child=widgets.Box(
                     child=[
@@ -110,7 +113,7 @@ class OSDSpeaker(OSD):
     def __init__(self):
         super().__init__(
             namespace="Speaker",
-            revealer = widgets.Revealer(
+            revealer=widgets.Revealer(
                 transition_type="crossfade",
                 child=widgets.Box(
                     child=[

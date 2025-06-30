@@ -8,6 +8,7 @@ from user_options import user_options
 fetch = FetchService.get_default()
 window_manager = WindowManager.get_default()
 
+
 def format_uptime(value: tuple[int, int, int, int]) -> str:
     days, hours, minutes, seconds = value
     if days:

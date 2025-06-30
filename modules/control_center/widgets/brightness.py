@@ -23,7 +23,9 @@ class Brightness(widgets.Box):
                     hexpand=True,
                     value=backlight.bind("brightness"),
                     css_classes=["material-slider"],
-                    on_change=lambda x: asyncio.create_task(backlight.set_brightness_async(x.value)),
+                    on_change=lambda x: asyncio.create_task(
+                        backlight.set_brightness_async(x.value)
+                    ),
                 ),
             ],
         )

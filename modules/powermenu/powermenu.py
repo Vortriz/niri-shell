@@ -6,8 +6,10 @@ from typing import Callable
 
 window_manager = WindowManager.get_default()
 
+
 def create_exec_task(cmd: str) -> None:
     asyncio.create_task(utils.exec_sh_async(cmd))
+
 
 class PowermenuButton(widgets.Box):
     def __init__(self, label: str, icon_name: str, on_click: Callable) -> None:

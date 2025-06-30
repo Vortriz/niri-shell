@@ -97,7 +97,9 @@ class Player(widgets.Revealer):
                                             ),
                                             pixel_size=18,
                                         ),
-                                        on_click=lambda x: asyncio.create_task(player.play_pause_async()),
+                                        on_click=lambda x: asyncio.create_task(
+                                            player.play_pause_async()
+                                        ),
                                         visible=player.bind("can_play"),
                                         css_classes=player.bind(
                                             "playback_status",
@@ -126,7 +128,9 @@ class Player(widgets.Revealer):
                                 max=player.bind("length"),
                                 hexpand=True,
                                 css_classes=[self.get_css("media-scale")],
-                                on_change=lambda x: asyncio.create_task(self._player.set_position_async(x.value)),
+                                on_change=lambda x: asyncio.create_task(
+                                    self._player.set_position_async(x.value)
+                                ),
                                 visible=player.bind(
                                     "position", lambda value: value != -1
                                 ),
@@ -137,7 +141,9 @@ class Player(widgets.Revealer):
                                     pixel_size=20,
                                 ),
                                 css_classes=[self.get_css("media-skip-button")],
-                                on_click=lambda x: asyncio.create_task(player.previous_async()),
+                                on_click=lambda x: asyncio.create_task(
+                                    player.previous_async()
+                                ),
                                 visible=player.bind("can_go_previous"),
                                 style="margin-left: 1rem;",
                             ),
@@ -147,7 +153,9 @@ class Player(widgets.Revealer):
                                     pixel_size=20,
                                 ),
                                 css_classes=[self.get_css("media-skip-button")],
-                                on_click=lambda x: asyncio.create_task(player.next_async()),
+                                on_click=lambda x: asyncio.create_task(
+                                    player.next_async()
+                                ),
                                 visible=player.bind("can_go_next"),
                                 style="margin-left: 1rem;",
                             ),

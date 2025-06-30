@@ -84,7 +84,9 @@ class DeviceMenu(Menu):
                     ),
                     css_classes=["volume-entry", "unset"],
                     style="margin-bottom: 0;",
-                    on_click=lambda x: asyncio.create_task(utils.exec_sh_async("pavucontrol")),
+                    on_click=lambda x: asyncio.create_task(
+                        utils.exec_sh_async("pavucontrol")
+                    ),
                 ),
             ],
         )
@@ -114,7 +116,9 @@ class VolumeSlider(widgets.Box):
         )
 
         arrow = widgets.Button(
-            child=widgets.Arrow(pixel_size=20, rotated=device_menu.bind("reveal_child")),
+            child=widgets.Arrow(
+                pixel_size=20, rotated=device_menu.bind("reveal_child")
+            ),
             css_classes=["material-slider-arrow", "hover-surface"],
             on_click=lambda x: device_menu.toggle(),
         )

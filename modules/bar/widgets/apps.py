@@ -27,7 +27,9 @@ class AppItem(widgets.Button):
         )
 
         super().__init__(
-            child=widgets.Box(child=[widgets.Icon(image=app.icon, pixel_size=32), menu]),
+            child=widgets.Box(
+                child=[widgets.Icon(image=app.icon, pixel_size=32), menu]
+            ),
             on_click=lambda x: app.launch(terminal_format=TERMINAL_FORMAT),
             on_right_click=lambda x: menu.popup(),
             css_classes=["pinned-app", "unset"],

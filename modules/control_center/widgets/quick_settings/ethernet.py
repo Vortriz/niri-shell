@@ -66,7 +66,9 @@ class EthernetMenu(Menu):
                 widgets.Button(
                     css_classes=["network-item", "unset"],
                     style="margin-bottom: 0;",
-                    on_click=lambda x: asyncio.create_task(utils.exec_sh_async("nm-connection-editor")),
+                    on_click=lambda x: asyncio.create_task(
+                        utils.exec_sh_async("nm-connection-editor")
+                    ),
                     child=widgets.Box(
                         child=[
                             widgets.Icon(image="preferences-system-symbolic"),

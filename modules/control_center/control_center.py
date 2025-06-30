@@ -12,6 +12,7 @@ from .menu import opened_menu
 
 window_manager = WindowManager.get_default()
 
+
 class ControlCenter(widgets.RevealerWindow):
     def __init__(self):
         revealer = widgets.Revealer(
@@ -53,7 +54,9 @@ class ControlCenter(widgets.RevealerWindow):
                         vexpand=True,
                         hexpand=True,
                         css_classes=["unset"],
-                        on_click=lambda x: window_manager.close_window("ignis_CONTROL_CENTER"),
+                        on_click=lambda x: window_manager.close_window(
+                            "ignis_CONTROL_CENTER"
+                        ),
                     ),
                     revealer,
                 ],

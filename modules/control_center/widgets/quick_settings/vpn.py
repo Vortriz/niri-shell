@@ -63,7 +63,9 @@ class VpnMenu(Menu):
                 widgets.Separator(),
                 widgets.Button(
                     css_classes=["network-item", "unset"],
-                    on_click=lambda x: asyncio.create_task(utils.exec_sh_async("nm-connection-editor")),
+                    on_click=lambda x: asyncio.create_task(
+                        utils.exec_sh_async("nm-connection-editor")
+                    ),
                     style="margin-bottom: 0;",
                     child=widgets.Box(
                         child=[
