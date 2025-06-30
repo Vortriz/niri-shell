@@ -1,5 +1,5 @@
 from ignis import widgets
-from ignis.services.upower import UPowerService, UPowerDevice
+from ignis.services.upower import UPowerDevice, UPowerService
 
 upower = UPowerService.get_default()
 
@@ -16,13 +16,6 @@ class BatteryItem(widgets.Box):
                 widgets.Label(
                     label=device.bind("percent", lambda x: f"{int(x)}%"),
                     css_classes=["battery-percent"],
-                ),
-                widgets.Scale(
-                    min=0,
-                    max=100,
-                    value=device.bind("percent"),
-                    sensitive=False,
-                    css_classes=["battery-scale"],
                 ),
             ],
         )

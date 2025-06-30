@@ -1,7 +1,7 @@
 from ignis import widgets
+from ignis.menu_model import IgnisMenuItem, IgnisMenuModel, IgnisMenuSeparator
+from ignis.services.applications import Application, ApplicationsService
 from ignis.window_manager import WindowManager
-from ignis.services.applications import ApplicationsService, Application
-from ignis.menu_model import IgnisMenuModel, IgnisMenuItem, IgnisMenuSeparator
 
 applications = ApplicationsService.get_default()
 window_manager = WindowManager.get_default()
@@ -39,13 +39,6 @@ class Apps(widgets.Box):
         super().__init__(
             child=applications.bind(
                 "pinned",
-                transform=lambda value: [AppItem(app) for app in value]
-                + [
-                    widgets.Button(
-                        child=widgets.Icon(image="start-here-symbolic", pixel_size=32),
-                        on_click=lambda x: window_manager.toggle_window("ignis_LAUNCHER"),
-                        css_classes=["pinned-app", "unset"],
-                    )
-                ],
+                transform=lambda value: [AppItem(app) for app in value],
             )
         )

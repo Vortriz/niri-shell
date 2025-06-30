@@ -28,7 +28,7 @@ class UserOptions(OptionsManager):
             pass
 
     class User(OptionsGroup):
-        avatar: str = f"/var/lib/AccountsService/icons/{os.getenv('USER')}"
+        avatar: str = "/mnt/HOUSE/personal/profile-pictures/warrior-girl.png"
 
     class Settings(OptionsGroup):
         last_page: int = 0

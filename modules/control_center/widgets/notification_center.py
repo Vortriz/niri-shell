@@ -89,7 +89,7 @@ class NotificationCenter(widgets.Box):
                             css_classes=["notification-count"],
                         ),
                         widgets.Label(
-                            label="notifications",
+                            label="Notifications",
                             css_classes=["notification-header-label"],
                         ),
                         widgets.Button(

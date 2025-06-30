@@ -1,4 +1,4 @@
-from ignis import widgets
+from ignis import widgets, utils
 from .widgets import StatusPill, Tray, KeyboardLayout, Battery, Apps, Workspaces
 
 
@@ -15,7 +15,9 @@ class Bar(widgets.Window):
             kb_mode="none",
             child=widgets.CenterBox(
                 css_classes=["bar-widget"],
-                start_widget=widgets.Box(child=[Workspaces()]),
+                start_widget=widgets.Box(
+                    child=[Workspaces(utils.get_monitor(0).get_connector())]
+                ),
                 center_widget=widgets.Box(child=[Apps()]),
                 end_widget=widgets.Box(
                     child=[Tray(), KeyboardLayout(), Battery(), StatusPill(monitor)]

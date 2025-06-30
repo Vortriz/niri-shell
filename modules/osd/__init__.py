@@ -1,3 +1,3 @@
-from .osd import OSD
+from .osd import OSDBacklight, OSDMic, OSDSpeaker
 
-__all__ = ["OSD"]
+__all__ = ["OSDBacklight", "OSDMic", "OSDSpeaker"]

@@ -11,7 +11,7 @@ class DNDButton(QSButton):
     def __init__(self):
         super().__init__(
             label=options.notifications.bind(
-                "dnd", lambda value: "Silent" if value else "Noisy"
+                "dnd", lambda value: "Silent" if value else "On"
             ),
             icon_name=options.notifications.bind(
                 "dnd",
