@@ -7,6 +7,7 @@ niri = NiriService.get_default()
 class WorkspaceButton(widgets.Button):
     def __init__(self, workspace: NiriWorkspace) -> None:
         super().__init__(
+            child=widgets.Label(label=workspace.name or str(workspace.id)),
             css_classes=["workspace", "unset"],
             on_click=lambda x: workspace.switch_to(),
             halign="start",
@@ -30,8 +31,8 @@ def scroll_workspaces(monitor_name: str, direction: str = "") -> None:
 
 class Workspaces(widgets.Box):
     def __init__(self, monitor_name: str):
-        if niri.is_available:
-            child = [
+        super().__init__(
+            child=[
                 widgets.EventBox(
                     on_scroll_up=lambda x: scroll_workspaces("up", monitor_name),
                     on_scroll_down=lambda x: scroll_workspaces("down", monitor_name),
@@ -47,6 +48,4 @@ class Workspaces(widgets.Box):
                     ),
                 )
             ]
-        else:
-            child = []
-        super().__init__(child=child)
+        )
