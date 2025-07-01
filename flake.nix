@@ -11,6 +11,7 @@
         ignis = {
             url = "github:Vortriz/ignis";
             inputs.nixpkgs.follows = "nixpkgs";
+            inputs.systems.follows = "systems";
         };
     };
 
