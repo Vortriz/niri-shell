@@ -26,34 +26,29 @@
         forAllSystems = lib.genAttrs (import systems);
         forAllPkgs = f: forAllSystems (system: f legacyPackages.${system});
     in {
-        packages = forAllPkgs (pkgs: {default = ignis.packages.${pkgs.system}.ignis;});
+        packages = forAllPkgs (pkgs: {
+            default = ignis.packages.${pkgs.system}.ignis.override {
+                extraPackages = with pkgs.python313Packages; [
+                    psutil
+                    jinja2
+                    pillow
+                    materialyoucolor
+                ];
+            };
+        });
 
         homeModules.default = {
             config,
             pkgs,
             ...
         }: let
-            cfg = config.programs.ignis-shell;
+            cfg = config.programs.niri-shell;
         in {
             options.programs = {
-                ignis-shell = {
+                niri-shell = {
                     enable = lib.mkEnableOption "ignis shell";
 
-                    package = lib.mkPackageOption pkgs "ignis-shell" {
-                        default = ignis.packages.${pkgs.system}.default;
-                    };
-
-                    extraPackages = lib.mkOption {
-                        type = lib.types.listOf lib.types.package;
-                        description = "Extra packages to be included in for building Ignis shell.";
-                        default = with pkgs.python313Packages; [
-                            # Add extra dependencies here
-                            psutil
-                            jinja2
-                            pillow
-                            materialyoucolor
-                        ];
-                    };
+                    package = lib.mkPackageOption self.packages.${pkgs.system} "default" {};
 
                     externalPackages = lib.mkOption {
                         type = lib.types.listOf lib.types.package;
@@ -66,7 +61,7 @@
             };
 
             config = lib.mkIf cfg.enable {
-                home.packages = [cfg.package.override {inherit (cfg) extraPackages;}] ++ cfg.externalPackages;
+                home.packages = [cfg.package] ++ cfg.externalPackages;
             };
         };
 
