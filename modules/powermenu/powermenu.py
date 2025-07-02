@@ -56,12 +56,14 @@ class SuspendButton(PowermenuButton):
         create_exec_task("systemctl suspend && hyprlock")
 
 
-class HyprlandExitButton(PowermenuButton):
+class NiriExitButton(PowermenuButton):
     def __init__(self):
         super().__init__(
             label="Sign out",
             icon_name="system-log-out-symbolic",
-            on_click=lambda *args: create_exec_task("hyprctl dispatch exit 0"),
+            on_click=lambda *args: create_exec_task(
+                "niri msg action quit --skip-confirmation"
+            ),
         )
 
 
@@ -82,7 +84,7 @@ class Powermenu(widgets.Window):
                 widgets.Box(
                     child=[
                         SuspendButton(),
-                        HyprlandExitButton(),
+                        NiriExitButton(),
                     ]
                 ),
             ],

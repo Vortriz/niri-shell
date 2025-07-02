@@ -32,7 +32,6 @@ for monitor in range(utils.get_n_monitors()):
 for monitor in range(utils.get_n_monitors()):
     NotificationPopup(monitor)
 
-# Launcher()
 Powermenu()
 OSDBacklight()
 OSDMic()
