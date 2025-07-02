@@ -9,7 +9,7 @@
         };
 
         ignis = {
-            url = "github:Vortriz/ignis";
+            url = "github:ignis-sh/ignis";
             inputs.nixpkgs.follows = "nixpkgs";
             inputs.systems.follows = "systems";
         };
@@ -73,6 +73,8 @@
                     self.packages.${pkgs.system}.default
                     ruff
                 ];
+
+                LD_LIBRARY_PATH = lib.makeLibraryPath [pkgs.gtk4-layer-shell];
             };
         });
     };

@@ -32,37 +32,6 @@ class OSD(widgets.RevealerWindow):
         super().set_property("visible", False)
 
 
-# class OSDBacklight(widgets.RevealerWindow):
-#     def __init__(self):
-#         revealer = widgets.Revealer(
-#             transition_type="slide_left",
-#             child=widgets.Box(
-#                         child=[
-#                             widgets.Icon(
-#                                 pixel_size=26,
-#                                 style="margin-right: 0.5rem;",
-#                                 image="brightness",
-#                             ),
-#                             MaterialBrightnessSlider(sensitive=False),
-#                         ],
-#                         css_classes=["osd"],
-#             ),
-#             transition_duration=500,
-#             reveal_child=True,
-#         )
-
-#         super().__init__(
-#             layer="top",
-#             anchor=["bottom"],
-#             namespace="ignis_OSD_Backlight",
-#             visible=False,
-#             popup=True,
-#             css_classes=["unset"],
-#             child=widgets.Box(child=[revealer]),
-#             revealer=revealer,
-#         )
-
-
 class OSDBacklight(OSD):
     def __init__(self):
         super().__init__(

@@ -127,7 +127,13 @@ class NotificationWidget(widgets.Box):
     def __init__(self, notification: Notification) -> None:
         layout: NormalLayout | ScreenshotLayout
 
-        if notification.app_name == "grimblast":
+        if (
+            notification.body
+            == "grim's screenshot component is implemented based on wlroots, it may not be used in GNOME or similar desktop environments"
+        ):
+            return
+
+        if notification.app_name == "niri":
             layout = ScreenshotLayout(notification)
         else:
             layout = NormalLayout(notification)
