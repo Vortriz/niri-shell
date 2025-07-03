@@ -37,6 +37,8 @@
             };
         });
 
+        overlays.default = final: prev: {ignis = self.packages.${prev.system}.default;};
+
         homeModules.default = {
             config,
             pkgs,
