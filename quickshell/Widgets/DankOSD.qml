@@ -214,7 +214,7 @@ PanelWindow {
         case SettingsData.Position.Bottom:
         case SettingsData.Position.BottomCenter:
             const bottomDockOffset = SettingsData.dockPosition === SettingsData.Position.Bottom ? dockOffset : 0;
-            return Theme.snap(screenHeight - alignedHeight - margin - Math.max(barEdgeOffsets.bottom, bottomDockOffset), dpr);
+            return Theme.snap(screenHeight - alignedHeight - margin - Math.max(barEdgeOffsets.bottom, bottomDockOffset) - Theme.spacingXL * 4, dpr);
         case SettingsData.Position.LeftCenter:
         case SettingsData.Position.RightCenter:
         default:
